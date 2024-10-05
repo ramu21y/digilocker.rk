@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYDOCLOCKER</title>
+      <style>   #home h2 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        #home p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }.section {
+  display: none; /* Initially hidden */
+  background-color: #f0f0f0;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.section h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.section input {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.section button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.section p {
+  margin: 20px 0;
+}
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: relative;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(0, 255, 204, 0.2), rgba(0, 0, 0, 0.6));
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 1s ease;
+            width: 500%;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            flex: 1 0 100%;
+            border-radius: 10px;
+            filter: drop-shadow(0 4px 10px rgba(0, 255, 204, 0.7));
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-100%); }
+            40% { transform: translateX(-200%); }
+            60% { transform: translateX(-300%); }
+            80% { transform: translateX(-400%); }
+            100% { transform: translateX(0); }
+        }
+
+        .carousel {
+            animation: slide 20s infinite;
+        }
+
+        .header-text {
+            position: relative;
+            z-index: 10;
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 4px 10px rgba(0, 255, 204, 0.7), 0 2px 15px rgba(0, 255, 204, 0.3);
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .header-text h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0, 255, 204, 0.3);
+        }
+
+        nav a {
+            color: #00ffcc;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 0 0 8px #00ffcc;
+            transition: color 0.3s, text-shadow 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 15px #00ffcc, 0 0 20px #00ffcc, 0 0 25px #00ffcc;
+            transform: scale(1.1);
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            background: linear-gradient(45deg, #00ffcc, #00796b);
+            color: white;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.5);
+            text-align: center;
+            font-size: 1.8rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .section ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+        }
+
+        .section li {
+            flex: 1 1 200px;
+            padding: 15px;
+            margin: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section li:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 255, 204, 0.7);
+        }
+
+        .section li img {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: 2px solid #00ffcc;
+        }
+
+        .section li a {
+            color: #1f1f1f;
+            text-decoration: none;
+            background: linear-gradient(45deg, #00ffcc, #00796b);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .section li a:hover {
+            background: linear-gradient(45deg, #00bfa5, #00695c);
+            color: #fff;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            color: #00ffcc;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -4px 15px rgba(0, 255, 204, 0.3);
+            backdrop-filter: blur(10px);
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        footer a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 15px #00ffcc, 0 0 20px #00ffcc, 0 0 25px #00ffcc;
+        }
+
+
+
+        input[type="file"], input[type="text"], input[type="password"] {
+            margin: 10px 0;
+            padding: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        #documentContent {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        
+        #loginSection {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        #content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+      <div id="loginSection">
+        <h2>Sign in to access DOCLOCKER</h2>
+        <input type="email" id="emailInput" placeholder="Enter your email">
+        <button onclick="mockSignIn()">Sign In</button>
+    </div>
+
+
+    <div id="content">
+           <div class="carousel">
+                <img src="https://www.encanvas.com/wp-content/uploads/2022/05/AdobeStock_478283134-2-scaled.jpeg" alt="DOC">
+                <img src="https://cdn.prod.website-files.com/62045da4270c887c4de9c45f/62045f1101066684cc4daf29_61f81ef9d5186c2bd5d2ea4f_iStock-1212785891-600x400.jpeg" alt="Movie 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnaX9rS3YwsTZT7g09U_0euwKLHoZYdxci0w&usqp=CAU" alt="Movie 3">
+                <img src="https://etimg.etb2bimg.com/thumb/msid-94641312,imgsize-24426,width-1200,height-765,overlay-etbrandequity/research/underutilisation-of-digital-document-processes-is-putting-indian-organisations-at-risk-report.jpg" alt="Movie 4">
+                <img src="https://www.gdata.in/images/blog-images/gdata_blog_post-unlocking-values.jpg" alt="Movie 5">
+            </div>
+        </div>
+        <div class="header-text">
+            <h1>WELCOME TO WORLD OF PAPERLESS DOCUMENTS</h1>
+        </div>
+    </header>
+    <nav>
+        <a onclick="showSection('home')">HOME</a>
+        <a onclick="showSection('secure')">SECURE</a>
+        <a onclick="showSection('upload')">UPLOAD</a>
+        <a onclick="showSection('view')">VIEW</a>
+    </nav>
+    
+  <div id="home" class="section">
+            <h2>WHY DO WE USE DOCLOCKER</h2>
+            <p>DOCLOCKER offers several benefits that address the challenges of managing and securing important documents in a digital age. <br>
+            1. Security and Safety
+            Protection Against Loss: Physical documents can be easily lost, damaged, or destroyed due to accidents, natural disasters, or theft. Digital document savers provide a secure environment where important files are backed up and protected from such risks.
+            Encryption and Access Control: These platforms often use encryption and secure access methods (such as passwords, PINs, or biometrics) to protect documents from unauthorized access, ensuring that only you or authorized individuals can view them.<br>
+            2. Convenience and Accessibility
+            Anywhere, Anytime Access: Digital documents can be accessed from any device with an internet connection, allowing you to retrieve important files instantly, whether you're at home, in the office, or on the go.
+            Organized Storage: Digital document savers allow you to category
+            Storage: Digital document savers allow you to categorize and organize your documents efficiently, making it easy to find and manage files without sorting through physical papers.<br>
+            Conclusion:
+            Using DOCLOCKER provides a secure, convenient, and environmentally friendly way to manage important documents, making it a valuable tool for both individuals and organizations in today's digital world.
+            </p>
+            <h2>USES OF DOCLOCKER</h2><p>
+            1) Cost-Effectiveness
+            Reduced Need for Physical Storage: By digitizing documents, you eliminate the need for physical storage space, which can be costly and cumbersome. This is especially beneficial for businesses and individuals who handle large volumes of paperwork.<br>
+            Savings on Document Management: Digitizing documents reduces costs associated with printing, photocopying, and shipping physical papers.<br>
+            2) Eco-Friendly
+            Paperless Environment: Using a digital document saver reduces the need for paper, contributing to environmental conservation by minimizing paper waste and the carbon footprint associated with producing and disposing of paper.
+            </p>
+            <h2>HOW TO USE</h2>
+            <p>   1)CREATE ACCOUNT OR SIGN IN <br>
+            2)SELECT UPLOAD ,SELECT DOCS THEN UPLOAD<br>
+            3)THEN SECURE WITH PASSCODE OR PIN <br>
+            4)VIEW WHENEVER YOU NEED<br>
+            </p>
+        </div>
+
+       <div id="upload" class="section" style="display:none;">
+    <h2>Upload Document</h2>
+    <input type="file" id="fileInput" accept="image/jpeg">
+    <input type="password" id="uploadPin" placeholder="Enter PIN" maxlength="4">
+    <button onclick="uploadDocument()">Upload Image</button>
+</div>
+
+        <div id="secure" class="section" style="display:none;">
+            <h2>Secure Section</h2>
+            <h3>Set Passcode</h3>
+            <input type="password" id="passcode" placeholder="Passcode (8 characters)" maxlength="8"><br>
+            <button onclick="setPasscode()">Set Passcode</button>
+            <p>-------------------(OR)-------------------------</p>
+            <h3>Set PIN</h3>
+            <input type="password" id="pin" placeholder="PIN (4 digits)" maxlength="4"><br>
+            <button onclick="setPin()">Set PIN</button>
+        </div>
+           <div id="view" class="section" style="display:none;">
+    <h2>View Documents</h2>
+    <input type="password" id="viewPin" placeholder="Enter PIN" maxlength="4">
+    <button onclick="viewDocuments()">View Images</button>
+    <div id="imageContainer"></div>
+</div>
+
+    </div>
+
+    <script>
+           function mockSignIn() {
+        var email = document.getElementById('emailInput').value;
+        if (email) {
+            console.log('Signed in with:', email);
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        } else {
+            alert('Please enter an email address');
+        }
+    }
+
+    function mockSignOut() {
+        console.log('User signed out.');
+        document.getElementById('loginSection').style.display = 'block';
+        document.getElementById('content').style.display = 'none';
+        document.getElementById('emailInput').value = '';
+    }
+                 function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.style.display = 'block';
+            }
+        }
+
+       function uploadDocument() {
+    const fileInput = document.getElementById('fileInput');
+    const pinInput = document.getElementById('uploadPin');
+    const file = fileInput.files[0];
+    const pin = pinInput.value.trim();
+    const storedPin = localStorage.getItem('pin');
+
+    if (!file || !file.type.match('image/jpeg')) {
+        alert('Please select a JPEG image');
+        return;
+    }
+
+    if (pin !== storedPin) {
+        alert('Incorrect PIN');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const base64Data = e.target.result.split(',')[1];
+        const existingImages = JSON.parse(localStorage.getItem('images') || '[]');
+        existingImages.push(base64Data);
+        localStorage.setItem('images', JSON.stringify(existingImages));
+        alert('Image uploaded successfully.');
+        fileInput.value = '';
+        pinInput.value = '';
+    };
+    reader.readAsDataURL(file);
+}
+
+       function viewDocuments() {
+    const pinInput = document.getElementById('viewPin');
+    const pin = pinInput.value.trim();
+    const storedPin = localStorage.getItem('pin');
+    const imageContainer = document.getElementById('imageContainer');
+
+    if (pin !== storedPin) {
+        alert('Incorrect PIN');
+        imageContainer.innerHTML = '';
+        return;
+    }
+
+    const images = JSON.parse(localStorage.getItem('images') || '[]');
+    
+    if (images.length === 0) {
+        imageContainer.innerHTML = '<p>No images found.</p>';
+    } else {
+        imageContainer.innerHTML = images.map((base64Data, index) => 
+            `<img src="data:image/jpeg;base64,${base64Data}" alt="Uploaded Image ${index + 1}" style="max-width: 100%; margin-bottom: 10px;">`
+        ).join('');
+    }
+
+    pinInput.value = '';
+}
+
+        function setPasscode() {
+            const passcode = document.getElementById('passcode').value;
+            if (passcode.length === 8) {
+                localStorage.setItem('passcode', passcode);
+                alert('Passcode set successfully');
+            } else {
+                alert('Passcode must be 8 characters long');
+            }
+        }
+
+       function setPin() {
+    const pin = document.getElementById('pin').value;
+    if (pin.length === 4 && !isNaN(pin)) {
+        localStorage.setItem('pin', pin);
+        localStorage.removeItem('images'); // Clear existing images
+        alert('PIN set successfully. Any previously uploaded images have been cleared for security.');
+    } else {
+        alert('PIN must be 4 digits');
+    }
+}        
+    </script>
+
+    <footer>
+        <p>BY BASHA_RAM</p>
+        <button onclick="signOut()">Sign Out</button>
+    </footer>
+</body>
+</html>
